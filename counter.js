@@ -1,16 +1,14 @@
-let counter = 0;
+document.addEventListener('DOMContentLoaded', function () {
 
-document.addEventListener('DOMContentLoaded', function() {
-    document.querySelector('button').onclick = count;
+    const input = document.querySelector("input#number");
+
+    input.addEventListener("input", function () {
+        const number = document.querySelector('#number').value;
+        const f = (Number(number) * (9 / 5)) + 32;
+        const v = Math.round((f + Number.EPSILON) * 100) / 100;
+
+        
+        document.querySelector('h1').innerHTML = `${number}°C = ${v}°F`;
     });
 
-function count() {
-    counter++;
-
-    if (counter % 10 === 0) {
-        document.querySelector("h1").classList.add('red');}
-    else {
-        document.querySelector("h1").classList.remove('red');
-        }
-    document.querySelector('h1').innerHTML = counter;
-}
+});
